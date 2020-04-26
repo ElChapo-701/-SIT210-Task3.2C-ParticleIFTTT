@@ -1,6 +1,6 @@
 int analogvalue = 0;
 double tempC = 0;
-char *message = "my name is Joaquin 'El Chapo' Guzman"";
+char *message = "my name is Joaquin 'El Chapo' Guzman";
 
 void setup()
 {
