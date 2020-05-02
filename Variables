@@ -1,21 +1,25 @@
-int analogvalue = 0;
-double tempC = 0;
-char *message = "my name is Joaquin 'El Chapo' Guzman";
+int led = CHG;  
 
-void setup()
-{
-  // variable name max length is 12 characters long
-  Particle.variable("analogvalue", &analogvalue, INT);
-  Particle.variable("temp", &tempC, DOUBLE);
-  Particle.variable("mess", message, STRING);
-  pinMode(A0, INPUT);
+void setup() {
+  pinMode(led, OUTPUT);
 }
 
-void loop()
-{
-  // Read the analog value of the sensor (TMP36)
-  analogvalue = analogRead(A0);
-  //Convert the reading into degree celcius
-  tempC = (((analogvalue * 6.9)/9911) - 0.5) * 100;
-  delay(200);
+void loop() {
+  digitalWrite(led, HIGH);   
+
+  String temp = String(random(30, 40));
+  Particle.publish("Sunlight is there, temprature", temp, PRIVATE);
+  delay(3000);           
+
+  digitalWrite(led, LOW);    
+  delay(3000); 
+  
+  digitalWrite(led, HIGH);   
+
+   temp = (random(10, 20));
+  Particle.publish("Sunlight is not there, temprature", temp, PRIVATE);
+  delay(3000);           
+
+  digitalWrite(led, LOW);    
+  delay(3000);
 }
