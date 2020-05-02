@@ -1,4 +1,4 @@
-int led = CHG;  
+int led = D7;  
 
 void setup() {
   pinMode(led, OUTPUT);
