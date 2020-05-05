@@ -4,6 +4,7 @@ int digitalValue;
 int analogValue = 0;
 
 
+
 void setup() {
 
   
@@ -20,12 +21,12 @@ void loop() {
   
   analogValue = analogRead(photoresistor);
  
- if (analogValue = (1,66)){
-     digitalWrite(led1,LOW);
+ if (analogValue = (19)){
+     digitalWrite(led1,HIGH);
      
  }
  else{
-     digitalWrite(led1,HIGH);
+     digitalWrite(led1,LOW);
      
  }
 
