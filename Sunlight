@@ -1,25 +1,32 @@
-int led = D7;  
+int led1 = D7; 
+int photoresistor = A0;
+int digitalValue;
+int analogValue = 0;
+
 
 void setup() {
-  pinMode(led, OUTPUT);
+
+  
+  Particle.variable("Sunlight is there", &digitalValue, INT);
+  Particle.variable("Sunlight is there", &photoresistor, INT);
+  pinMode(led1, OUTPUT);
+  
+  pinMode(photoresistor,INPUT);
+
 }
 
+
 void loop() {
-  digitalWrite(led, HIGH);   
-
-  String temp = String(random(30, 40));
-  Particle.publish("Sunlight is there, temprature", temp, PRIVATE);
-  delay(3000);           
-
-  digitalWrite(led, LOW);    
-  delay(3000); 
   
-  digitalWrite(led, HIGH);   
+  analogValue = analogRead(photoresistor);
+ 
+ if (analogValue = (1,66)){
+     digitalWrite(led1,LOW);
+     
+ }
+ else{
+     digitalWrite(led1,HIGH);
+     
+ }
 
-   temp = (random(10, 20));
-  Particle.publish("Sunlight is not there, temprature", temp, PRIVATE);
-  delay(3000);           
-
-  digitalWrite(led, LOW);    
-  delay(3000);
 }
